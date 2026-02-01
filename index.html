@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gusto Restaurant - Fine Dining Experience | Restoran Terpercaya & Profesional</title>
+    <meta name="description" content="Gusto Restaurant menawarkan pengalaman fine dining terbaik dengan bahan-bahan lokal berkualitas tinggi. Reservasi online mudah, suasana elegan, dan pelayanan istimewa.">
+    <meta name="keywords" content="restoran fine dining, reservasi online, makanan premium, restoran terpercaya, tempat makan romantis, acara khusus">
+    <meta name="author" content="Gusto Restaurant">
+    <meta property="og:title" content="Gusto Restaurant - Fine Dining Experience">
+    <meta property="og:description" content="Pengalaman kuliner tak terlupakan di restoran terpercaya dengan reservasi online mudah.">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/x-icon" href="#">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8B0000;
+            --primary-dark: #5a0000;
+            --primary-light: #a52a2a;
+            --secondary-color: #d4af37;
+            --accent-color: #f5f5dc;
+            --dark-color: #222222;
+            --light-color: #f8f8f8;
+            --gray-color: #777777;
+            --transition: all 0.3s ease;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Crimson Text', serif;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            color: var(--light-color);
+        }
+        
+        h2 {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 28px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #b8941f;
+        }
+        
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(34, 34, 34, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+        
+        .logo span {
+            color: var(--primary-light);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--light-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            bottom: -5px;
+            left: 0;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light-color);
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--light-color);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            margin-bottom: 1.5rem;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            color: var(--accent-color);
+            animation: fadeIn 2s ease;
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            animation: fadeIn 2.5s ease;
+        }
+        
+        /* Booking Section */
+        .booking-section {
+            background-color: var(--accent-color);
+        }
+        
+        .booking-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 3rem;
+        }
+        
+        .booking-form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / span 2;
+        }
+        
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(139, 0, 0, 0.2);
+        }
+        
+        .booking-success {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            background-color: #f0f9f0;
+            border-radius: var(--border-radius);
+            border-left: 5px solid #4CAF50;
+            margin-top: 2rem;
+        }
+        
+        .booking-success i {
+            color: #4CAF50;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-text {
+            padding-right: 1rem;
+        }
+        
+        .about-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+        
+        .about-image img:hover {
+            transform: scale(1.05);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            background-color: var(--light-color);
+            transition: var(--transition);
+        }
+        
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+        
+        .feature i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        /* Address Section */
+        .address-section {
+            background-color: var(--light-color);
+        }
+        
+        .address-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .address-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-right: 1rem;
+            width: 40px;
+        }
+        
+        .map-container {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 400px;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        .opening-hours {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .opening-hours h3 {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .hours-table {
+            width: 100%;
+        }
+        
+        .hours-table tr {
+            border-bottom: 1px solid #eee;
+        }
+        
+        .hours-table td {
+            padding: 0.7rem 0;
+        }
+        
+        .hours-table td:last-child {
+            font-weight: 600;
+            text-align: right;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+        
+        .footer-logo {
+            font-family: 'Crimson Text', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links h4,
+        .footer-social h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+            color: var(--gray-color);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.3rem;
+            }
+            
+            .about-content,
+            .address-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background-color: var(--dark-color);
+                width: 100%;
+                text-align: center;
+                padding: 2rem 0;
+                transition: var(--transition);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .booking-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-group.full-width {
+                grid-column: 1;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-btns .btn {
+                width: 80%;
+                margin-bottom: 1rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .booking-container {
+                padding: 2rem 1.5rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#home" class="logo">Gusto<span>.</span></a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#booking">Reservasi</a></li>
+                    <li><a href="#about">Tentang Kami</a></li>
+                    <li><a href="#address">Alamat</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Pengalaman Kuliner Tak Terlupakan</h1>
+            <p>Gusto Restaurant menawarkan perpaduan sempurna antara cita rasa autentik, bahan-bahan berkualitas tinggi, dan pelayanan istimewa dalam suasana elegan dan romantis.</p>
+            <div class="hero-btns">
+                <a href="#booking" class="btn">Reservasi Sekarang</a>
+                <a href="#about" class="btn btn-secondary">Tentang Kami</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="section booking-section" id="booking">
+        <div class="container">
+            <h2>Reservasi Online</h2>
+            <div class="booking-container">
+                <p>Silakan isi formulir di bawah ini untuk melakukan reservasi di Gusto Restaurant. Kami akan mengonfirmasi reservasi Anda melalui telepon atau email dalam waktu 24 jam.</p>
+                
+                <form id="bookingForm" class="booking-form">
+                    <div class="form-group">
+                        <label for="name">Nama Lengkap *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Nomor Telepon *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="date">Tanggal Reservasi *</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="time">Waktu *</label>
+                        <select id="time" name="time" required>
+                            <option value="">Pilih Waktu</option>
+                            <option value="17:00">17:00</option>
+                            <option value="18:00">18:00</option>
+                            <option value="19:00">19:00</option>
+                            <option value="20:00">20:00</option>
+                            <option value="21:00">21:00</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="guests">Jumlah Tamu *</label>
+                        <select id="guests" name="guests" required>
+                            <option value="">Pilih Jumlah Tamu</option>
+                            <option value="1">1 Orang</option>
+                            <option value="2">2 Orang</option>
+                            <option value="3">3 Orang</option>
+                            <option value="4">4 Orang</option>
+                            <option value="5">5 Orang</option>
+                            <option value="6+">6+ Orang</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="specialRequests">Permintaan Khusus (opsional)</label>
+                        <textarea id="specialRequests" name="specialRequests" rows="3" placeholder="Contoh: Meja dekat jendela, perayaan ulang tahun, alergi makanan tertentu..."></textarea>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <button type="submit" class="btn" style="width: 100%;">Buat Reservasi</button>
+                    </div>
+                </form>
+                
+                <div id="bookingSuccess" class="booking-success">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Reservasi Berhasil!</h3>
+                    <p>Terima kasih <span id="successName"></span> telah melakukan reservasi di Gusto Restaurant.</p>
+                    <p>Kami telah mengirimkan konfirmasi ke email <span id="successEmail"></span> untuk reservasi pada <span id="successDate"></span> pukul <span id="successTime"></span>.</p>
+                    <p>Silakan periksa email Anda untuk detail lengkap.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2>Tentang Restoran Kami</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Cerita di Balik Setiap Hidangan</h3>
+                    <p>Gusto Restaurant didirikan pada tahun 2010 dengan misi memberikan pengalaman kuliner terbaik yang menggabungkan cita rasa tradisional dengan sentuhan modern. Chef kepala kami, Alexander Rossi, telah menghabiskan lebih dari 20 tahun menguasai seni kuliner di berbagai negara.</p>
+                    <p>Kami hanya menggunakan bahan-bahan terbaik yang dipilih langsung dari petani dan produsen lokal terpercaya. Setiap hidangan disajikan dengan penuh perhatian terhadap detail, mulai dari pemilihan bahan hingga penyajian akhir.</p>
+                    <p>Restoran kami telah meraih berbagai penghargaan, termasuk "Best Fine Dining Restaurant 2022" dan "Top Culinary Experience 2023". Kami bangga menjadi bagian dari komunitas kuliner yang terus berkembang.</p>
+                    <a href="#booking" class="btn">Reservasi Meja</a>
+                </div>
+                <div class="about-image">
+                    <!-- Gambar ilustrasi restoran -->
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Interior Elegan Gusto Restaurant">
+                </div>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Menu Eksklusif</h3>
+                    <p>Menu musiman yang selalu diperbarui dengan bahan-bahan segar terbaik.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-wine-glass-alt"></i>
+                    <h3>Koleksi Anggur</h3>
+                    <p>Lebih dari 200 pilihan anggur dari seluruh dunia yang dipadukan sempurna dengan hidangan kami.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-award"></i>
+                    <h3>Penghargaan</h3>
+                    <p>Restoran berperingkat teratas dengan berbagai penghargaan bergengsi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Address Section -->
+    <section class="section address-section" id="address">
+        <div class="container">
+            <h2>Alamat & Kontak</h2>
+            <div class="address-container">
+                <div class="address-info">
+                    <h3>Kunjungi Restoran Kami</h3>
+                    <p>Kami berlokasi di jantung kota, dengan akses mudah dan tempat parkir yang luas. Suasana yang nyaman dan pelayanan ramah membuat setiap kunjangan menjadi pengalaman yang berkesan.</p>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Alamat</h4>
+                            <p>Jalan Gastronomi No. 123, Kelurahan Kuliner, Kota Fine Dining, 12345</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Telepon</h4>
+                            <p>(021) 555-1234</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@gustorestaurant.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="opening-hours">
+                        <h3>Jam Operasional</h3>
+                        <table class="hours-table">
+                            <tr>
+                                <td>Senin - Kamis</td>
+                                <td>11:00 - 22:00</td>
+                            </tr>
+                            <tr>
+                                <td>Jumat - Sabtu</td>
+                                <td>11:00 - 23:00</td>
+                            </tr>
+                            <tr>
+                                <td>Minggu</td>
+                                <td>10:00 - 21:00</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="map-container">
+                    <!-- Peta lokasi restoran -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.8195613506864!3d-6.194741395493371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x6b45e67356080477!2sJakarta%2C%20Indonesia!5e0!3m2!1sen!2s!4v1683912490654!5m2!1sen!2s" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">Gusto<span>.</span></div>
+                    <p>Restoran fine dining terpercaya dengan pengalaman kuliner tak terlupakan sejak 2010. Komitmen kami terhadap kualitas dan pelayanan menjadikan setiap kunjangan istimewa.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Tautan Cepat</h4>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#booking">Reservasi Online</a></li>
+                        <li><a href="#about">Tentang Kami</a></li>
+                        <li><a href="#address">Alamat & Kontak</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Informasi</h4>
+                    <ul>
+                        <li><a href="#">Menu & Harga</a></li>
+                        <li><a href="#">Acara Khusus</a></li>
+                        <li><a href="#">Katering</a></li>
+                        <li><a href="#">Karir</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-social">
+                    <h4>Ikuti Kami</h4>
+                    <p>Ikuti perkembangan terbaru dan promo spesial dari Gusto Restaurant.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Gusto Restaurant. Semua Hak Dilindungi. | Website oleh Tim Pengembang Restoran</p>
+                <p>Desain responsif dan SEO-friendly untuk pengalaman pengguna terbaik.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(34, 34, 34, 0.98)';
+                header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.backgroundColor = 'rgba(34, 34, 34, 0.95)';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+        
+        // Booking Form Submission
+        const bookingForm = document.getElementById('bookingForm');
+        const bookingSuccess = document.getElementById('bookingSuccess');
+        
+        // Set min date to today for date input
+        const dateInput = document.getElementById('date');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.min = today;
+        
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            
+            // Format date
+            const dateObj = new Date(date);
+            const formattedDate = dateObj.toLocaleDateString('id-ID', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            // Set success message values
+            document.getElementById('successName').textContent = name;
+            document.getElementById('successEmail').textContent = email;
+            document.getElementById('successDate').textContent = formattedDate;
+            document.getElementById('successTime').textContent = time;
+            
+            // Show success message
+            bookingForm.style.display = 'none';
+            bookingSuccess.style.display = 'block';
+            
+            // Scroll to success message
+            bookingSuccess.scrollIntoView({ behavior: 'smooth' });
+            
+            // In a real application, you would send the form data to a server here
+            console.log('Booking submitted:', {
+                name, 
+                phone: document.getElementById('phone').value,
+                email,
+                date,
+                time,
+                guests: document.getElementById('guests').value,
+                specialRequests: document.getElementById('specialRequests').value
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Initialize date input with tomorrow's date as default
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        dateInput.value = tomorrow.toISOString().split('T')[0];
+    </script>
+</body>
+</html>
